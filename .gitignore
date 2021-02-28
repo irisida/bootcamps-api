@@ -1,0 +1,8 @@
+# project ignores OS files
+.DS_STORE
+
+# Application ignores configuration files
+config/config.env
+
+# Application ignores
+/node_modules
