@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const bootcamps = require('./routes/bootcamps');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
+const errorHandler = require('./middleware/error');
 const colors = require('colors');
 
 /**
@@ -19,6 +20,11 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 /**
+ * body parser
+ */
+app.use(express.json());
+
+/**
  * Add dev logging middleware package morgan
  * which can be utilised for developmeht mode
  * only.
@@ -31,6 +37,11 @@ if (process.env.NODE_ENV === 'development') {
  * Mounts the routers
  */
 app.use('/api/v1/bootcamps', bootcamps);
+
+/**
+ * use the custom errorHandler
+ */
+app.use(errorHandler);
 
 const server = app.listen(
   PORT,
