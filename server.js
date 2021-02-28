@@ -36,7 +36,7 @@ const server = app.listen(
   PORT,
   console.log(
     `SUCCESS::Server running in ${process.env.NODE_ENV} mode on port: ${PORT}`
-      .green.bold
+      .yellow.bold
   )
 );
 
