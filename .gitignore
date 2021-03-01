@@ -6,3 +6,4 @@ config/config.env
 
 # Application ignores
 /node_modules
+
