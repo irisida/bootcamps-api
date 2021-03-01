@@ -39,9 +39,9 @@ if (process.env.NODE_ENV === 'development') {
 app.use('/api/v1/bootcamps', bootcamps);
 
 /**
- * use the custom errorHandler. Note to not add
- * custom handlers at the top otherwise it will
- * not use/call correctly.
+ * use the custom errorHandler. Note to not add the 'use' statement
+ * for the custom handlers at the top otherwise it will not perform
+ * use/call correctly.
  */
 app.use(errorHandler);
 
