@@ -58,6 +58,6 @@ const server = app.listen(
  * catcher in the ai, ai, ai... ;)
  */
 process.on('unhandledRejection', (err, promise) => {
-  console.log(`Error::Unhandled rejection::${err.message}`.red.bold);
+  console.log(`Error::Unhandled Rejection::${err.message}`.red.bold);
   server.close(() => process.exit(1));
 });
