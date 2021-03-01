@@ -1,4 +1,5 @@
 const { request } = require('express');
+const slugify = require('slugify');
 
 const mongoose = require('mongoose');
 
@@ -95,6 +96,15 @@ const BootcampSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+});
+
+/**
+ * create botcamp slug from the name
+ */
+BootcampSchema.pre('save', function (next) {
+  console.log('Slugify ran', this.name);
+  this.slug = slugify(this.name, { lower: true });
+  next();
 });
 
 module.exports = mongoose.model('Bootcamp', BootcampSchema);
