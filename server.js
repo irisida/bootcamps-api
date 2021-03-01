@@ -1,15 +1,17 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const bootcamps = require('./routes/bootcamps');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/error');
 const colors = require('colors');
 
 /**
- * Load the environment vars
+ * Load the environment vars. These must be loaded
+ * befpre the bootcamps routes are loaded in
  */
 dotenv.config({ path: './config/config.env' });
+
+const bootcamps = require('./routes/bootcamps');
 
 /**
  * Connect to the application database
