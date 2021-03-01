@@ -26,7 +26,7 @@ app.use(express.json());
 
 /**
  * Add dev logging middleware package morgan
- * which can be utilised for developmeht mode
+ * which can be utilised for development mode
  * only.
  */
 if (process.env.NODE_ENV === 'development') {
