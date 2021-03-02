@@ -51,7 +51,7 @@ const server = app.listen(
   PORT,
   console.log(
     `SUCCESS::Server running in ${process.env.NODE_ENV} mode on port: ${PORT}`
-      .yellow.bold
+      .green.inverse.bold
   )
 );
 
@@ -60,6 +60,6 @@ const server = app.listen(
  * catcher in the ai, ai, ai... ;)
  */
 process.on('unhandledRejection', (err, promise) => {
-  console.log(`Error::Unhandled Rejection::${err.message}`.red.bold);
+  console.log(`Error::Unhandled Rejection::${err.message}`.red.inverse.bold);
   server.close(() => process.exit(1));
 });

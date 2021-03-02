@@ -9,7 +9,7 @@ const connectDB = async () => {
   });
 
   console.log(
-    `SUCCESS::MongoDB connected: ${conn.connection.host}`.cyan.bold.underline
+    `SUCCESS::MongoDB connected: ${conn.connection.host}`.green.inverse.bold
   );
 };
 
