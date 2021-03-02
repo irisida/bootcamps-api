@@ -49,7 +49,7 @@ exports.getBootcamps = asyncHandler(async (req, res, next) => {
   }
 
   /**
-   * sort handling
+   * url parameter specified sort handling
    */
   if (req.query.sort) {
     const sortBy = req.query.sort.split(',').join(' ');
