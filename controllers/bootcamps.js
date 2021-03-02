@@ -43,9 +43,7 @@ exports.getBootcamps = asyncHandler(async (req, res, next) => {
    */
   if (req.query.select) {
     fields = req.query.select.split(',').join(' ');
-    console.log(fields);
     query = query.select(fields);
-    console.log(query);
   }
 
   /**
