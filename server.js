@@ -12,6 +12,7 @@ const colors = require('colors');
 dotenv.config({ path: './config/config.env' });
 
 const bootcamps = require('./routes/bootcamps');
+const courses = require('./routes/courses');
 
 /**
  * Connect to the application database
@@ -39,6 +40,7 @@ if (process.env.NODE_ENV === 'development') {
  * Mounts the routers
  */
 app.use('/api/v1/bootcamps', bootcamps);
+app.use('/api/v1/courses', courses);
 
 /**
  * use the custom errorHandler. Note to not add the 'use' statement
