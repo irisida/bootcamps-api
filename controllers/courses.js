@@ -120,20 +120,17 @@ exports.updateCourse = asyncHandler(async (req, res, next) => {
  * @param {*} res   response
  * @param {*} next  next functions
  */
-// exports.deleteCourse = asyncHandler(async (req, res, next) => {
-//   let course = await Course.findById(req.params.id);
+exports.deleteCourse = asyncHandler(async (req, res, next) => {
+  const course = await Course.findById(req.params.id);
 
-//   if (!course) {
-//     return next(new ErrorResponse(`No course with id: ${req.params.id}`), 404);
-//   }
+  if (!course) {
+    return next(new ErrorResponse(`No course with id: ${req.params.id}`), 404);
+  }
 
-//   course = await Course.findByIdAndUpdate(req.params.id, req.body, {
-//     new: true,
-//     runValidators: true,
-//   });
+  await course.remove();
 
-//   res.status(200).json({
-//     success: true,
-//     data: course,
-//   });
-// });
+  res.status(200).json({
+    success: true,
+    data: {},
+  });
+});
