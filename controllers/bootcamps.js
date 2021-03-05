@@ -61,7 +61,7 @@ exports.getBootcamps = asyncHandler(async (req, res, next) => {
    * defines the page number, the limit per page is defaulted to
    * 100 and we also define the skip.
    */
-  console.log('req.query.page:', req.query.page);
+  //console.log('req.query.page:', req.query.page);
   const page = parseInt(req.query.page, 10) || 1;
   const limit = parseInt(req.query.limit, 10) || 25;
   const startIndex = (page - 1) * limit;
