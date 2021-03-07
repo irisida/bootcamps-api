@@ -21,17 +21,7 @@ exports.register = asyncHandler(async (req, res, next) => {
     role,
   });
 
-  /**
-   * create a token by calling the method that is created on the User model
-   * to generate and return a JWT token with the expiry set to a default of
-   * 30 days.
-   */
-  const token = user.getSignedJwtToken();
-
-  res.status(200).json({
-    success: true,
-    token: token,
-  });
+  sendTokenResponse(user, 200, res);
 });
 
 /**
@@ -72,14 +62,38 @@ exports.login = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse('Invalid credentials', 401));
   }
 
+  sendTokenResponse(user, 200, res);
+});
+
+/**
+ * General helper function to:
+ * Get token from model and create a cookie.
+ * Sends response as a cookie
+ */
+const sendTokenResponse = (user, statusCode, res) => {
   /**
    * user and password checks have passed if you reach here so we can
    * now create and return a token.
    */
   const token = user.getSignedJwtToken();
 
-  res.status(200).json({
+  const options = {
+    // calculates the 30 days
+    expires: new Date(
+      Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000
+    ),
+    httpOnly: true,
+  };
+
+  /**
+   * adds https for production envs
+   */
+  if (process.env.NODE_ENV === 'production') {
+    options.secure = true;
+  }
+
+  res.status(statusCode).cookie('token', token, options).json({
     success: true,
     token: token,
   });
-});
+};

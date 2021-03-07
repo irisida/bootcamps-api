@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
 const fileupload = require('express-fileupload');
+const cookieParser = require('cookie-parser');
 const errorHandler = require('./middleware/error');
 const colors = require('colors');
 
@@ -29,6 +30,11 @@ const PORT = process.env.PORT || 5000;
  * body parser
  */
 app.use(express.json());
+
+/**
+ * cookie parser
+ */
+app.use(cookieParser());
 
 /**
  * Add dev logging middleware package morgan
