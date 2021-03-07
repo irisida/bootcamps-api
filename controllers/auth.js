@@ -21,7 +21,15 @@ exports.register = asyncHandler(async (req, res, next) => {
     role,
   });
 
+  /**
+   * create a token by calling the method that is created on the User model
+   * to generate and return a JWT token with the expiry set to a default of
+   * 30 days.
+   */
+  const token = user.getSignedJwtToken();
+
   res.status(200).json({
     success: true,
+    token: token,
   });
 });
