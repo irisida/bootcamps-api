@@ -2,105 +2,105 @@
   {
     "_id": "5d7a514b5d2c12c7449be042",
     "name": "Admin Account",
-    "email": "admin@ed.com",
+    "email": "admin@ed.io",
     "role": "user",
     "password": "ededed"
   },
   {
     "_id": "5d7a514b5d2c12c7449be043",
     "name": "Publisher Account",
-    "email": "pub@ed.com",
+    "email": "pub@ed.io",
     "role": "publisher",
     "password": "ededed"
   },
   {
     "_id": "5d7a514b5d2c12c7449be044",
     "name": "User Account",
-    "email": "user@ed.com",
+    "email": "user@ed.io",
     "role": "user",
     "password": "ededed"
   },
   {
     "_id": "5d7a514b5d2c12c7449be045",
     "name": "John Doe",
-    "email": "j@ed.com",
+    "email": "j@ed.io",
     "role": "publisher",
     "password": "ededed"
   },
   {
     "_id": "5d7a514b5d2c12c7449be046",
     "name": "Kevin Smith",
-    "email": "k@ed.com",
+    "email": "k@ed.io",
     "role": "publisher",
     "password": "ededed"
   },
   {
     "_id": "5c8a1d5b0190b214360dc031",
     "name": "Mary Williams",
-    "email": "m@ed.com",
+    "email": "m@ed.io",
     "role": "publisher",
     "password": "ededed"
   },
   {
     "_id": "5c8a1d5b0190b214360dc032",
     "name": "Nasha Ryan",
-    "email": "n@ed.com",
+    "email": "n@ed.io",
     "role": "publisher",
     "password": "ededed"
   },
   {
     "_id": "5c8a1d5b0190b214360dc033",
     "name": "Greg Harris",
-    "email": "g@ed.com",
+    "email": "g@ed.io",
     "role": "user",
     "password": "ededed"
   },
   {
     "_id": "5c8a1d5b0190b214360dc034",
     "name": "Derek Glover",
-    "email": "d@ed.com",
+    "email": "d@ed.io",
     "role": "user",
     "password": "ededed"
   },
   {
     "_id": "5c8a1d5b0190b214360dc035",
     "name": "Frank Hanson",
-    "email": "f@ed.com",
+    "email": "f@ed.io",
     "role": "user",
     "password": "ededed"
   },
   {
     "_id": "5c8a1d5b0190b214360dc036",
     "name": "Arry Williams",
-    "email": "a@ed.com",
+    "email": "a@ed.io",
     "role": "user",
     "password": "ededed"
   },
   {
     "_id": "5c8a1d5b0190b214360dc037",
     "name": "sally Johnson",
-    "email": "s@ed.com",
+    "email": "s@ed.io",
     "role": "user",
     "password": "ededed"
   },
   {
     "_id": "5c8a1d5b0190b214360dc038",
     "name": "Barry Dickens",
-    "email": "b@ed.com",
+    "email": "b@ed.io",
     "role": "user",
     "password": "ededed"
   },
   {
     "_id": "5c8a1d5b0190b214360dc039",
     "name": "Van Bolin",
-    "email": "v@ed.com",
+    "email": "v@ed.io",
     "role": "user",
     "password": "ededed"
   },
   {
     "_id": "5c8a1d5b0190b214360dc040",
     "name": "Cuntosi Kensing",
-    "email": "c@ed.com",
+    "email": "c@ed.io",
     "role": "user",
     "password": "ededed"
   }
