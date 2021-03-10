@@ -1,5 +1,10 @@
 const path = require('path');
 const express = require('express');
+const helmet = require('helmet');
+const xssclean = require('xss-clean');
+const hpp = require('hpp');
+const cors = require('cors');
+const ratelimit = require('express-rate-limit');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
@@ -7,6 +12,8 @@ const fileupload = require('express-fileupload');
 const cookieParser = require('cookie-parser');
 const errorHandler = require('./middleware/error');
 const colors = require('colors');
+// injection protection
+const mongoSanitize = require('express-mongo-sanitize');
 
 /**
  * Load the environment vars. These must be loaded
@@ -51,6 +58,26 @@ if (process.env.NODE_ENV === 'development') {
  * file uploading middleware
  */
 app.use(fileupload());
+
+/**
+ * middleware for mongoDB noSQL injection protection
+ */
+app.use(mongoSanitize());
+
+/**
+ * helmet headers, xss-clean
+ */
+app.use(helmet());
+app.use(xssclean());
+
+/**
+ * setup the rate limiting
+ */
+const limiter = ratelimit({ windowMs: 10 * 60 * 1000, max: 1 });
+app.use(limiter);
+
+app.use(hpp());
+app.use(cors());
 
 /**
  * set static folder

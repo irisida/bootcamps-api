@@ -14,7 +14,7 @@ const errorHandler = (err, req, res, next) => {
    * a statsCode for notFound, 404
    */
   if (err.name === 'CastError') {
-    const message = `Resource not found with ID of ${err.value}`;
+    const message = `Resource not found with`;
     error = new ErrorResponse(message, 404);
   }
 
