@@ -4,6 +4,7 @@ const asyncHandler = require('../middleware/async');
 const Review = require('../models/Review');
 const Bootcamp = require('../models/Bootcamp');
 const User = require('../models/User');
+const { findByIdAndUpdate, findByIdAndDelete } = require('../models/Review');
 
 /**
  * @description     get reviews
@@ -77,4 +78,72 @@ exports.createReview = asyncHandler(async (req, res, next) => {
   const review = await Review.create(req.body);
 
   res.status(201).json({ success: true, data: review });
+});
+
+/**
+ * @description     update a review
+ * @route           PUT /api/v1/reviews/:id
+ * @access          Private/user
+ * @param {*} req   request
+ * @param {*} res   response
+ * @param {*} next  next functions
+ */
+exports.updateReview = asyncHandler(async (req, res, next) => {
+  let review = await Review.findById(req.params.id);
+
+  if (!review) {
+    return next(
+      new ErrorResponse(`No review found with id: ${req.params.id}`, 404)
+    );
+  }
+
+  if (review.user.toString() !== req.user.id && req.user.role !== 'admin') {
+    console.log(review.user.toString());
+    console.log(req.user.id);
+    console.log(req.user.role);
+    return next(
+      new ErrorResponse(
+        `Not authorized to update review with id: ${req.params.id}`,
+        401
+      )
+    );
+  }
+
+  review = await Review.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
+  });
+
+  res.status(200).json({ success: true, data: review });
+});
+
+/**
+ * @description     Delete a review
+ * @route           Delete /api/v1/reviews/:id
+ * @access          Private/user
+ * @param {*} req   request
+ * @param {*} res   response
+ * @param {*} next  next functions
+ */
+exports.deleteReview = asyncHandler(async (req, res, next) => {
+  let review = await Review.findById(req.params.id);
+
+  if (!review) {
+    return next(
+      new ErrorResponse(`No review found with id: ${req.params.id}`, 404)
+    );
+  }
+
+  if (review.user.toString() !== req.user.id && req.user.role !== 'admin') {
+    return next(
+      new ErrorResponse(
+        `Not authorized to delete review with id: ${req.params.id}`,
+        401
+      )
+    );
+  }
+
+  await Review.findByIdAndDelete(req.params.id);
+
+  res.status(200).json({ success: true, data: {} });
 });
